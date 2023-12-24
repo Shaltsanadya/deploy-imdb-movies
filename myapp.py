@@ -39,7 +39,7 @@ def genre_movies(movie):
     movies_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:22]
     genre=[]
     for i in movies_list:
-        score.append(df.iloc[i[0]].genre)
+        genre.append(df.iloc[i[0]].genre)
     return genre
 
 movies_dict = pickle.load(open('movie_dict.pkl','rb'))
