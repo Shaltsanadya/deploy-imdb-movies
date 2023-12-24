@@ -54,7 +54,7 @@ if st.button('Recommend'):
     scores= score_movie(selected_movie_name)
     genres= genre_movies(selected_movie_name)
     for i in range(min(movie_count,len(recommendations))):
-        col1,col2= st.columns(2)
+        col1,col2,col3= st.columns(3)
         with col1:
             st.write(recommendations[i])
         with col2:
