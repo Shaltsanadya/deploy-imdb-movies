@@ -33,6 +33,14 @@ def score_movie(movie):
     for i in movies_list:
         score.append(df.iloc[i[0]].score)
     return score
+def genre_movies(movie):
+    movie_index = df[df['names'] == movie].index[0]
+    distances = spacy[movie_index]
+    movies_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:22]
+    genre=[]
+    for i in movies_list:
+        score.append(df.iloc[i[0]].genre)
+    return genre
 
 movies_dict = pickle.load(open('movie_dict.pkl','rb'))
 movies = pd.DataFrame(movies_dict)
@@ -44,9 +52,12 @@ if st.button('Recommend'):
     st.markdown("<h3 style='text-align: left; color: black;'>Recomended Film</h3>", unsafe_allow_html=True)
     recommendations = recommend(selected_movie_name)
     scores= score_movie(selected_movie_name)
+    genres= genre_movies(selected_movie_name)
     for i in range(min(movie_count,len(recommendations))):
         col1,col2= st.columns(2)
         with col1:
             st.write(recommendations[i])
         with col2:
             st.write(f"score: **{scores[i]}**")
+        with col3:
+            st.write(f"genres: **{genres[i]}**") 
