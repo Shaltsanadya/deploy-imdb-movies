@@ -60,4 +60,4 @@ if st.button('Recommend'):
         with col2:
             st.write(f"score: **{scores[i]}**")
         with col3:
-            st.write(f"genres: **{genres[i]}**") 
+            st.write(f"genre: **{genres[i]}**") 
